@@ -29,7 +29,7 @@
                         <td>{{record.state}}</td>
                         <td>{{record.zipcode}}</td>
                         <td>{{record.created_at}}</td>
-                        <td>{{record.id}}</td>
+                        <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
                     </tr>
                 {% endfor %}
             {% endif %}
@@ -39,20 +39,22 @@
         
         
         {% else %}
-        <h1>Login</h1>
-        <br/>
-        <form method="POST" action = "{% url 'login' %}">
-            {% csrf_token %}
-                <div class="mb-3">
-                  <input type="text" class="form-control" name="username" placeholder="User Name" 
-                            required/>
-                </div>
-                <div class="mb-3">
-                  <input type="password" class="form-control" name="password" placeholder="Password"
-                                required />
-                </div>
-                <button type="submit" class="btn btn-secondary">Login</button>
-        </form>
+        <div class="col-md-6 offset-md-3">
+          <h1>Login</h1>
+          <br/>
+          <form method="POST" action = "{% url 'login' %}">
+              {% csrf_token %}
+                  <div class="mb-3">
+                    <input type="text" class="form-control" name="username" placeholder="User Name" 
+                              required/>
+                  </div>
+                  <div class="mb-3">
+                    <input type="password" class="form-control" name="password" placeholder="Password"
+                                  required />
+                  </div>
+                  <button type="submit" class="btn btn-secondary">Login</button>
+          </form>
+        </div>
         {% endif %}
  
 {%endblock%}
